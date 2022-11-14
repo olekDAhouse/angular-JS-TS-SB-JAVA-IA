@@ -1,0 +1,25 @@
+<div [ngClass]="alerta"  class="alert" role="alert">
+  <strong>Well done !!</strong> You succesfully read this important message.
+</div>
+
+
+
+
+
+<button type="button" class="btn btn-info" (click)="alerta= 'alert-info'">INFO</button>
+<button type="button" class="btn btn-success" (click)="alerta= 'alert-success'">SUCCESS</button>
+
+<h3 [ngClass]="{'text-danger': propiedades.danger, 'text-info': !propiedades.danger}"
+>Hola World</h3>
+
+<button (click)="propiedades.danger = !propiedades.danger"
+ type="button" class="btn" [ngClass]="{'btn-danger': propiedades.danger, 'btn-info': !propiedades.danger}">Cambiar</button>
+<br><br>
+
+<h3>Proceso Asíncrono</h3>
+ <button (click)="ejecutar()" type="button" name="button" 
+  class="btn btn-primary" [disabled]="loading">
+   <i  [ngClass]="{'fa fa-save': !loading,' fas fa-sync fa-spin': loading}"></i>
+   <span *ngIf="!loading">Guardar cambios</span>
+   <span *ngIf="loading">Cargando...</span>
+ </button>
