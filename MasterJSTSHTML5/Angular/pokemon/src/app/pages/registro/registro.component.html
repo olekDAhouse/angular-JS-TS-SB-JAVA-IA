@@ -1,0 +1,77 @@
+<h4>Registro Nuevo Pokemon</h4>
+<hr />
+<form autocomplete="off" (ngSubmit)="guardar(forma)" #forma="ngForm" class="bg-light">
+  <h5>Introduzca los datos de un Nuevo Pokemon</h5>
+  <div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+        <input
+          class="form-control is-invalid"
+          type="text"
+          name="nombre"
+          [class.is-invalid]="nombre.invalid && nombre.touched"
+          [ngModel]="pokemon.nombre"
+          required
+          minlength="5"
+          ngModel
+          placeholder="Nombre"
+          #nombre="ngModel"
+        />
+        <small
+          *ngIf="nombre.invalid && nombre.touched"
+          class="form-text text-danger"
+          >Introduzca mínimo 5 letras por favor</small
+        >
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Peso</label>
+      <div class="col-8">
+        <input
+          class="form-control"
+          type="text"
+          name="peso"
+          [class.is-invalid]="peso.invalid && peso.touched"
+          [ngModel]="pokemon.peso"
+          required
+          ngModel
+          placeholder="Peso"
+          pattern="^[1-9]\d*(,\d+)?$"
+          #peso="ngModel"
+        />
+        <small
+          *ngIf="peso.invalid && peso.touched"
+          class="form-text text-danger"
+          >Introduzca un número para el peso por favor si tiene decimales utilice la ,</small>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Tipo</label>
+    <div class="col-8">
+      <select  class="form-select"
+      [disabled]="tipos.length === 0"
+      name="tipo"
+      [ngModel]="pokemon.tipo"
+      ngModel
+      required
+      >
+      <option *ngFor="let tipo of tipos"
+              [value]="tipo.id">
+            {{tipo.nombre}}</option>
+      </select>
+    </div>
+  </div>
+  <div>
+    <button type="submit" class="btn btn-outline-primary">
+      Registrar
+  </button>
+  </div>
+
+
+</form>

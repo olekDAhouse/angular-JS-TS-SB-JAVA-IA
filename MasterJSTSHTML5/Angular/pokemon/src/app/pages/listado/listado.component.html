@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <h5>Busca tu pokemon</h5>
+    <form class="d-flex" (ngSubmit)="buscar(forma)" #forma="ngForm">
+      <div class="col-5">
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          [disabled]="tipos.length === 0"
+          name="tipo"
+          [ngModel]="pokemon.tipo"
+          ngModel
+        >
+          <option *ngFor="let tipo of tipos" [value]="tipo.id" >
+            {{ tipo.nombre }}
+          </option>
+        </select>
+      </div>
+
+      <div class="col-6">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Nombre"
+          name="nombre"
+          [class.is-invalid]="nombre.invalid && nombre.touched"
+          [ngModel]="pokemon.nombre"
+          aria-label="Search"
+          #nombre="ngModel"
+        />
+      </div>
+      <button class="btn btn-outline-success" type="submit">Buscar</button>
+    </form>
+  </div>
+</nav>
+<div class="container">
+  <table class="table" >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of pokemons">
+        <th scope="row">1</th>
+        <td></td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
